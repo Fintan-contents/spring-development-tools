@@ -2,11 +2,9 @@
 
 ## バッチ開発補助
 
-- Shell Script自動生成ツール
+- [Shell Script自動生成ツール](./batch-development-assistance/README.md)
 
   ジョブスケジューラから起動されるShell Scriptと環境依存項目を設定したファイルを自動生成します。
-
-  (2022年中に公開予定)
 
 ## 管理外のもの
 
