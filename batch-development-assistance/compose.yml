@@ -1,0 +1,23 @@
+services:
+  app:
+    build:
+      context: ./
+      args:
+        http_proxy: ${HTTP_PROXY}
+        https_proxy: ${HTTPS_PROXY}
+    environment:
+      LANG: C.UTF-8
+      LANGUAGE: en_US
+    tty: true
+    stdin_open: true
+    volumes:
+      - ./scripts:/home/app/app/shell-common/
+      - ./test/spec:/home/app/shellspec/spec/
+      - ./test/mock-java-batch/target/app-batch.jar:/home/app/app/run/app-batch.jar
+    depends_on:
+      - sftp-server
+  sftp-server:
+    build:
+      context: ./
+      dockerfile: Dockerfile-sftp-server
+    command: sftp-user:pass:::fromDir,toDir
