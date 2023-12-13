@@ -196,7 +196,7 @@ Describe "integration-test"
         The status should equal 0
         The output should include "[ func_mail_send.sh ] EXIT_CODE = [0]"
         The file "${WORK_DIR}"/result should satisfy global_include_text "JVM引数=\[-Dsample=mailValue1, -Xms256m, -DsysProp=sysPropValue]"
-        The file "${WORK_DIR}"/result should satisfy global_include_text "コマンドライン引数=\[--resident-batch.enabled=true, --resident-batch.job-id=N2100006, --resident-batch.spring-batch-job-name=BA10301, --resident-batch.run-interval=60000, --boot-prop=bootPropValue, --app-prop=appValue, job-param=jobValue, file=/home/app/shellspec/work/result]"
+        The file "${WORK_DIR}"/result should satisfy global_include_text "コマンドライン引数=\[--resident-batch.enabled=true, --spring.batch.job.enabled=false, --resident-batch.job-id=N2100006, --resident-batch.spring-batch-job-name=BA10301, --resident-batch.run-interval=60000, --boot-prop=bootPropValue, --app-prop=appValue, job-param=jobValue, file=/home/app/shellspec/work/result]"
 
         # 常駐起動しているjavaプロセスを強制終了
         pkill java
@@ -212,7 +212,7 @@ Describe "integration-test"
         The status should equal 0
         The output should include "[ func_resident_batch.sh ] EXIT_CODE = [0]"
         The file "${WORK_DIR}"/result should satisfy global_include_text "JVM引数=\[-Dsample=resiValue1, -Xms256m, -DsysProp=sysPropValue]"
-        The file "${WORK_DIR}"/result should satisfy global_include_text "コマンドライン引数=\[--resident-batch.enabled=true, --resident-batch.job-id=N2100002, --resident-batch.spring-batch-job-name=BA10201, --resident-batch.run-interval=120000, --boot-prop=bootPropValue, --app-prop=appValue, job-param=jobValue, file=/home/app/shellspec/work/result]"
+        The file "${WORK_DIR}"/result should satisfy global_include_text "コマンドライン引数=\[--resident-batch.enabled=true, --spring.batch.job.enabled=false, --resident-batch.job-id=N2100002, --resident-batch.spring-batch-job-name=BA10201, --resident-batch.run-interval=120000, --boot-prop=bootPropValue, --app-prop=appValue, job-param=jobValue, file=/home/app/shellspec/work/result]"
 
         # 常駐起動しているjavaプロセスを強制終了
         pkill java
