@@ -41,7 +41,7 @@ Docker環境は、以下2つのコンテナを立ち上げる構成を採って�
 
 ```
 /home/app/
- |-jdk-11.0.16.1+1/    : JDKインストールディレクトリ(apt-get でインストールした JDK へのシンボリックリンク)
+ |-jdk-17-openjdk/    : JDKインストールディレクトリ(apt-get でインストールした JDK へのシンボリックリンク)
  |-app/
  | |-run/              : 実行対象の jar を配置しておくディレクトリ
  | |  `-app-batch.jar  : Javaバッチのjarファイル(volume:./test/mock-java-batch/target/app-batch.jar)
