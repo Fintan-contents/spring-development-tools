@@ -19,7 +19,7 @@ RUN apt-get update -y && apt-get install -y \
     vim less
 
 # ShellSpec のインストール
-RUN cd /opt && git clone https://github.com/shellspec/shellspec.git -b 0.28.1 --depth 1 
+RUN cd /opt && git clone https://github.com/shellspec/shellspec.git -b 0.28.1 --depth 1
 RUN ln -s /opt/shellspec/shellspec /usr/local/bin/
 
 # ユーザ作成

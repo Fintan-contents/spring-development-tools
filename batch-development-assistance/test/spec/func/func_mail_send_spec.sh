@@ -53,7 +53,7 @@ EOF
     It "起動済みのジョブIDで実行した場合"
         # 常駐起動
         "${SUT}" ddd --resident-batch.enabled=true
-        
+
         When run source ${SUT} ddd
         The status should equal 1
         The output should end with "2022/12/23 12:34:56 $(hostname) $(whoami) : [ ${CMD} ] specified JOB_ID is already used by another process."

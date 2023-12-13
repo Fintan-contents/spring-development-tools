@@ -37,7 +37,7 @@ Describe "integration-test"
     It "ファイル削除"
         mkdir -p /home/app/work/trancefer/delete/target
         echo "Hello World!" > /home/app/work/trancefer/delete/target/delete.txt
-        
+
         Data "y"
         When run script "${SCRIPTS_DIR}"/ファイル削除/T2300001
 
@@ -57,7 +57,7 @@ Describe "integration-test"
         export SFTP_FROM_DIR=fromDir
         export SFTP_USER=sftp-user
         export SFTP_SERVER=sftp-server
-        
+
         Data "y"
         When run script "${SCRIPTS_DIR}"/ファイル受信/T2800001
 
@@ -90,7 +90,7 @@ Describe "integration-test"
 
         The status should equal 0
         The output should include "[ func_access_cryptographic_tool.sh ] EXIT_CODE = [0]"
-        
+
         The file /home/app/work/trancefer/openssl/to/normal_encrypt.txt should satisfy global_check_encrypted_file \
             /home/app/work/trancefer/openssl/from/normal_encrypt.txt /home/app/key/crypt/ssl.key
 
@@ -112,7 +112,7 @@ Describe "integration-test"
 
         The status should equal 0
         The output should include "[ func_access_cryptographic_tool.sh ] EXIT_CODE = [0]"
-        
+
         The contents of file /home/app/work/trancefer/openssl/to/normal_encrypt.txt should equal "Hello World!"
 
         # 標準エラー出力を無視すると警告が出るのでアサートしている
@@ -129,7 +129,7 @@ Describe "integration-test"
 
         The status should equal 0
         The output should include "[ func_rename_file.sh ] EXIT_CODE = [0]"
-        
+
         The file /home/app/work/trancefer/rename/from/moveFrom.txt should not be exist
         The contents of file /home/app/work/trancefer/rename/to/moveTo.txt should equal "Hello World!"
     End
@@ -144,7 +144,7 @@ Describe "integration-test"
 
         The status should equal 0
         The output should include "[ func_rename_file.sh ] EXIT_CODE = [0]"
-        
+
         The file /home/app/work/trancefer/copy/from/copyFrom.txt should be exist
         The contents of file /home/app/work/trancefer/copy/to/copyTo.txt should equal "Hello World!"
     End
@@ -164,20 +164,20 @@ Describe "integration-test"
 
         The status should equal 0
         The output should include "[ func_extract_file.sh ] EXIT_CODE = [0]"
-        
+
         The directory /home/app/work/trancefer/extract/target should satisfy global_check_dir_diff /home/app/work/trancefer/input
     End
 
     It "ファイル送信"
         mkdir -p /home/app/work/trancefer/sftp/from
         echo "Hello World!" > /home/app/work/trancefer/sftp/from/normal_put.txt
-        
+
         global_sftp_clear_dir /toDir
 
         export SFTP_TO_DIR=toDir
         export SFTP_USER=sftp-user
         export SFTP_SERVER=sftp-server
-        
+
         Data "y"
         When run script "${SCRIPTS_DIR}"/ファイル送信/T2700001
 

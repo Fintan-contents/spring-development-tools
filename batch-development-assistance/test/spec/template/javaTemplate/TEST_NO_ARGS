@@ -30,7 +30,7 @@ CONFIRM_USER_INPUT
 OPTIONS=$*
 
 ### javaコマンドオプション構築 ###
-set --  
+set --
 INP_JAVA_OPT=$*
 export INP_JAVA_OPT
 
