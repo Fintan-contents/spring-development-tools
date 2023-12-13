@@ -228,6 +228,6 @@ Describe "integration-test"
         The status should equal 0
         The output should include "[ func_single_batch.sh ] EXIT_CODE = [0]"
         The file "${WORK_DIR}"/result should satisfy global_include_text "JVM引数=\[-Dsample=singValue1, -Xms256m, -DsysProp=sysPropValue]"
-        The file "${WORK_DIR}"/result should satisfy global_include_text "コマンドライン引数=\[--spring.batch.job.names=BA10101, --boot-prop=bootPropValue, --app-prop=appValue, job-param=jobValue, file=/home/app/shellspec/work/result]"
+        The file "${WORK_DIR}"/result should satisfy global_include_text "コマンドライン引数=\[--spring.batch.job.name=BA10101, --boot-prop=bootPropValue, --app-prop=appValue, job-param=jobValue, file=/home/app/shellspec/work/result]"
     End
 End

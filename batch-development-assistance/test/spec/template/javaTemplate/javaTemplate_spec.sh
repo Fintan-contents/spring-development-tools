@@ -29,7 +29,7 @@ EOF
         Data "y"
         When run script $TEST_NO_ARGS
         The output should include "JVM引数=[-Dsample=singValue1]"
-        The output should include "コマンドライン引数=[--spring.batch.job.names=TEST_NO_ARGS]"
+        The output should include "コマンドライン引数=[--spring.batch.job.name=TEST_NO_ARGS]"
         The status should equal 0
     End
 
@@ -37,7 +37,7 @@ EOF
         Data "y"
         When run script $TEST_SINGLE_ARGS
         The output should include "JVM引数=[-Dsample=singValue1, -Xms256m, -Dsystem-prop1=sysValue1]"
-        The output should include "コマンドライン引数=[--spring.batch.job.names=TEST_SINGLE_ARGS, --app.prop1=appValue1, --job.param1=jobValue1]"
+        The output should include "コマンドライン引数=[--spring.batch.job.name=TEST_SINGLE_ARGS, --app.prop1=appValue1, --job.param1=jobValue1]"
         The status should equal 0
     End
 
@@ -45,14 +45,14 @@ EOF
         Data "y"
         When run script $TEST_MULTIPLE_ARGS
         The output should include "JVM引数=[-Dsample=singValue1, -Xms256m, -Xmx512m, -Dsystem-prop1=sysValue1, -Dsystem-prop2=sysValue2]"
-        The output should include "コマンドライン引数=[--spring.batch.job.names=TEST_MULTIPLE_ARGS, --app.prop1=appValue1, --app.prop2=appValue2, --job.param1=jobValue1, --job.param2=jobValue2]"
+        The output should include "コマンドライン引数=[--spring.batch.job.name=TEST_MULTIPLE_ARGS, --app.prop1=appValue1, --app.prop2=appValue2, --job.param1=jobValue1, --job.param2=jobValue2]"
         The status should equal 0
     End
 
     It "スクリプトに渡した引数が、そのまま子スクリプトに引数が渡せていること"
         Data "y"
         When run script $TEST_NO_ARGS foo bar fizz buzz
-        The output should include "コマンドライン引数=[--spring.batch.job.names=TEST_NO_ARGS, foo, bar, fizz, buzz]"
+        The output should include "コマンドライン引数=[--spring.batch.job.name=TEST_NO_ARGS, foo, bar, fizz, buzz]"
         The status should equal 0
     End
 
