@@ -5,10 +5,10 @@ ARG http_proxy
 ARG https_proxy
 
 # 各種ツールのインストール
-# JDK のインストール先 > /usr/lib/jvm/java-11-openjdk-amd64
+# JDK のインストール先 > /usr/lib/jvm/java-17-openjdk-amd64
 RUN apt-get update -y && apt-get install -y \
     # JDK: Java バッチの起動に必要
-    openjdk-11-jdk \
+    openjdk-17-jdk \
     # ShellSpec のインストールに必要
     wget git \
     # ShellSpec でカバレッジを計測するのに必要
@@ -19,7 +19,7 @@ RUN apt-get update -y && apt-get install -y \
     vim less
 
 # ShellSpec のインストール
-RUN cd /opt && git clone https://github.com/shellspec/shellspec.git -b 0.28.1 --depth 1 
+RUN cd /opt && git clone https://github.com/shellspec/shellspec.git -b 0.28.1 --depth 1
 RUN ln -s /opt/shellspec/shellspec /usr/local/bin/
 
 # ユーザ作成
@@ -38,7 +38,7 @@ RUN mkdir -p /home/app/app/runningjar \
     /home/app/key/crypt \
     /home/app/shellspec
 
-RUN ln -s /usr/lib/jvm/java-11-openjdk-amd64 /home/app/jdk-11.0.16.1+1
+RUN ln -s /usr/lib/jvm/java-17-openjdk-amd64 /home/app/jdk-17-openjdk
 
 # 共通鍵生成
 RUN openssl rand -base64 -out /home/app/key/crypt/ssl.key 256

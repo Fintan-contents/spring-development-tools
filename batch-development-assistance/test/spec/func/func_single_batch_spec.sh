@@ -80,10 +80,10 @@ EOF
 
     It "JAVA_HOME_PATHで指定されたJavaが使用されていることとコピーしたjarで起動されていることの確認"
         global_make_script /home/app/app/shell-common/conf/java_env.config << EOF
-JAVA_HOME_PATH=/home/app/jdk-11.0.16.1+1
+JAVA_HOME_PATH=/home/app/jdk-17-openjdk
 EOF
         When run source ${SUT} test_job_id
-        The output should include "/home/app/jdk-11.0.16.1+1/bin/java -jar ${RUN_LIB_OUT}/test_job_id_$$/app-batch.jar"
+        The output should include "/home/app/jdk-17-openjdk/bin/java -jar ${RUN_LIB_OUT}/test_job_id_$$/app-batch.jar"
     End
 
     It "2つ目以降の引数がjavaコマンドの引数に渡されることの確認"

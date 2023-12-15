@@ -53,7 +53,7 @@ EOF
     It "起動済みのジョブIDで実行した場合"
         # 常駐起動
         "${SUT}" ddd --resident-batch.enabled=true
-        
+
         When run source ${SUT} ddd
         The status should equal 1
         The output should end with "2022/12/23 12:34:56 $(hostname) $(whoami) : [ ${CMD} ] specified JOB_ID is already used by another process."
@@ -74,14 +74,14 @@ EOF
 
     It "JAVA_HOME_PATHで指定されたJavaが使用されていることとコピーしたjarで起動されていることの確認"
         global_make_script /home/app/app/shell-common/conf/java_env.config << EOF
-JAVA_HOME_PATH=/home/app/jdk-11.0.16.1+1
+JAVA_HOME_PATH=/home/app/jdk-17-openjdk
 EOF
         When run source ${SUT} fff file="${WORK_DIR}"/result
 
         # バックグラウンド実行しているためファイル出力が完了するまで待機
         global_wait_for_make_file "${WORK_DIR}"/result
 
-        The file "${WORK_DIR}"/result should satisfy global_include_text "/home/app/jdk-11.0.16.1+1/bin/java -jar ${RUN_LIB_OUT}/fff/app-batch.jar"
+        The file "${WORK_DIR}"/result should satisfy global_include_text "/home/app/jdk-17-openjdk/bin/java -jar ${RUN_LIB_OUT}/fff/app-batch.jar"
 
         # 標準出力を無視すると警告が出るので、アサートしている
         The output should include "2022/12/23 12:34:56 $(hostname) $(whoami) : [ ${CMD} ] EXIT_CODE = [0]"

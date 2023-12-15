@@ -36,7 +36,7 @@ export INP_JAVA_OPT
 
 ### 子スクリプトを実行する。 ###
 RUN_CHILD_SCRIPT "${COMMON_DIR}"'/func/func_single_batch.sh TEST_SINGLE_ARGS ' \
-' --spring.batch.job.names=TEST_SINGLE_ARGS --app.prop1=appValue1 ' \
+' --spring.batch.job.name=TEST_SINGLE_ARGS --app.prop1=appValue1 ' \
 '--job.param1=jobValue1 \
  ' \
 "${OPTIONS}"
