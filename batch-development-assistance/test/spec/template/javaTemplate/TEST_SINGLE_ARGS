@@ -1,0 +1,48 @@
+#!/bin/sh
+###################################################
+#  Script name  : TEST_SINGLE_ARGS
+#  Description  : それぞれ1つだけ指定
+#  Server type  : Batch Server
+#  User         : apliuser
+#  Usage        : TEST_SINGLE_ARGS [options]
+#  Date         : 2022/11/14
+#  Returns      : 0:正常終了、1:異常終了、2:警告終了
+###################################################
+
+###################################################
+#  共通設定ファイルをインポートする。
+###################################################
+COMMON_DIR="/home/app/app/shell-common"
+COMMON_CONF_DIR="${COMMON_DIR}/conf"
+export COMMON_DIR
+export COMMON_CONF_DIR
+. ${COMMON_CONF_DIR}/common.sh
+
+### ディレクトリ情報読み込み ###
+. ${COMMON_CONF_DIR}/batch_dir.config
+
+###################################################
+# スクリプト本文
+###################################################
+CONFIRM_USER_INPUT
+
+### 引数保存 ###
+OPTIONS=$*
+
+### javaコマンドオプション構築 ###
+set --  -Xms256m  -Dsystem-prop1=sysValue1
+INP_JAVA_OPT=$*
+export INP_JAVA_OPT
+
+### 子スクリプトを実行する。 ###
+RUN_CHILD_SCRIPT "${COMMON_DIR}"'/func/func_single_batch.sh TEST_SINGLE_ARGS ' \
+' --spring.batch.job.name=TEST_SINGLE_ARGS --app.prop1=appValue1 ' \
+'--job.param1=jobValue1 \
+ ' \
+"${OPTIONS}"
+
+
+EXIT_CODE=${?}
+exit ${EXIT_CODE}
+
+

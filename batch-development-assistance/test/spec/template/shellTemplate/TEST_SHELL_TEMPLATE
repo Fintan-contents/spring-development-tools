@@ -1,0 +1,47 @@
+#!/bin/sh
+###################################################
+#  Script name  : TEST_SHELL_TEMPLATE
+#  Description  : shellTemplateのテスト
+#  Server type  : Batch Server
+#  User         : apliuser
+#  Usage        : TEST_SHELL_TEMPLATE [s yyyymmdd]...
+#  Date         :  2022/11/14
+#  Returns      : 0:正常終了、1～:異常終了
+###################################################
+
+###################################################
+#  共通設定ファイルをインポートする。
+###################################################
+COMMON_DIR="/home/app/app/shell-common"
+COMMON_CONF_DIR="${COMMON_DIR}/conf"
+export COMMON_DIR
+export COMMON_CONF_DIR
+. ${COMMON_CONF_DIR}/common.sh
+
+### ディレクトリ情報読み込み ###
+. ${COMMON_CONF_DIR}/batch_dir.config
+
+###################################################
+# スクリプト本文
+###################################################
+### 引数チェック ###
+if [ "$(($# % 2))" -ne 0 ]
+then
+    LOG_MSG \
+"
+Usage :$0"
+
+    exit 1
+fi
+
+CONFIRM_USER_INPUT
+
+### 子スクリプトを実行する。 ###
+RUN_CHILD_SCRIPT "${COMMON_DIR}"'/func/func_delete_file.sh \
+targetDir \
+delete.txt \
+'
+
+EXIT_CODE=${?}
+exit ${EXIT_CODE}
+

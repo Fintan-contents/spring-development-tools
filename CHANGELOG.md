@@ -1,5 +1,12 @@
 # CHANGELOG
 
+リリース日と主な変更点は次の通りです。
+
+## [2023-12-25](https://github.com/Fintan-contents/spring-development-tools/milestone/1?closed=1)
+
+- 変更
+    - Shell Script自動生成ツールをSpring Boot 3.2向けに修正([#2](https://github.com/Fintan-contents/spring-development-tools/pull/2))
+
 ## 2022-12-23
 
 - 機能追加

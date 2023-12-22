@@ -1,0 +1,5 @@
+# atmoz/sftp:debian
+FROM atmoz/sftp@sha256:2421858e247bee10047bf7a7f9e80b274dae0f077c2d4a235babfbcba18734a2
+
+# sftp用の公開鍵配置
+COPY test/sftp-key/sftp.key.pub /home/sftp-user/.ssh/authorized_keys
